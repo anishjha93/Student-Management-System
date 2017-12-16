@@ -1,0 +1,70 @@
+  
+  <div class="container">
+  
+  <!-- Trigger the modal with a button --> 
+  
+  <div class="col-sm-3">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchModal">Add Details</button>
+  </div>
+  
+  <!-- Single Details -->
+  
+  
+  <div class="modal fade" id="searchModal" role="dialog">
+    <div class="modal-dialog modal-sm-5">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Student Information</h4>
+        </div>
+  <div class="modal-body" data-ng-show="formShowStatus">
+	    	 <form class="container center_div">
+  <div class="form-group row" >
+    <div class="form-inline">
+      <input type="text" class="form-control" id="id" data-ng-model="myForm.id" data-ng-change="checkUserId()" placeholder="Enter Id">
+		<span class="{{idClass}}" style="color:{{idColors}}">{{idStatus}}</span>
+    </div>
+    </div>
+    <div class="form-group row" >
+    <div class="form-inline">
+      <input type="text" class="form-control" id="name" data-ng-model="myForm.name" placeholder="Enter Name">
+		<span style="color:{{nameColors}}">{{nameStatus}}</span>
+    </div>
+    </div>
+    <div class="form-group row" >
+    <div class="form-inline">
+      <input type="text"  class="form-control" id="section" data-ng-model="myForm.section" placeholder="Enter Section">
+		<span style="color:{{sectionColors}}">{{sectionStatus}}</span>
+    </div>
+    </div>
+    <div class="form-group row">
+    <div class="form-inline">
+      <input type="text" class="form-control" id="address" data-ng-model="myForm.address" placeholder="Enter Address">
+		<span style="color:{{addressColors}}">{{addressStatus}}</span>
+    </div>
+    </div>
+    <div class="form-group row" >
+    <div class="form-inline">
+      <input type="text" class="form-control" id="city" data-ng-model="myForm.city" placeholder="Enter City">
+		<span style="color:{{cityColors}}">{{cityStatus}}</span>
+    </div>
+  </div>
+  <div class="form-group row">
+    <div class="form-inline col-sm-3">
+      <input type="submit" class="btn btn-primary" value="Save" data-ng-click="myForm.submitForm()">
+    </div>
+  </div>
+</form>
+</div>
+<br><br><p style="margin-left:35px;">{{responseData}}</p>
+        <div class="modal-footer">
+        	<input type="button" ng-show="update" class="btn btn-default" data-ng-click="updateDetails()" value="Update">
+          <input type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="closeModal()" value="Close">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 

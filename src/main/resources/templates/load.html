@@ -1,0 +1,122 @@
+  
+  <div class="container">
+  
+  <!-- Trigger the modal with a button --> 
+  <div class="col-sm-3">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Get All Details</button>
+  </div>
+  <div class="col-sm-3">
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#searchModal">Seacrh Details by id</button>
+  </div>
+  
+  <!-- Model For All Details -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Student Information</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="col-sm-3">
+	      		<input type="text" class="form-control form-control-sm" data-ng-model="srch[selectSortBy]" placeholder="Enter {{selectSortBy}}">
+	    	</div>
+	    	<div class="col-sm-3">
+	    		<select class="btn btn-default dropdown-toggle" data-ng-model="selectSortBy"><option data-ng-repeat="x in arr">{{x}}</option></select>
+	    	</div>
+			<table class="table table-dark" >
+			<thead>
+			    <tr>
+			      <th scope="col" data-ng-click="sortData('id')">Id
+			      	<span data-ng-show="sortKey=='id'" data-ng-class="loadIcon"></span>
+			      </th>
+			      <th scope="col" data-ng-click="sortData('name')">Name
+			      	<span data-ng-show="sortKey=='name'" data-ng-class="loadIcon"></span>
+			      </th>
+			      <th scope="col" data-ng-click="sortData('section')">Section
+			      	<span data-ng-show="sortKey=='section'" data-ng-class="loadIcon"></span>
+			      </th>
+			      <th scope="col" data-ng-click="sortData('address')">Address
+			      	<span data-ng-show="sortKey=='address'" data-ng-class="loadIcon"></span>
+			      </th>
+			      <th scope="col" data-ng-click="sortData('city')">City
+			      	<span data-ng-show="sortKey=='city'" data-ng-class="loadIcon"></span>
+			      </th>
+			    </tr>
+			  </thead>
+			  <tbody>
+		    	<tr data-ng-repeat="st in stdnt | filter:srch | orderBy:sortKey:reverse | limitTo:pageSize:(currentPage-1)*pageSize">	
+			       <td>{{st.id}}</td>
+			       <td>{{st.name}}</td>
+			       <td>{{st.section}}</td>
+			       <td>{{st.address}}</td>
+			       <td>{{st.city}}</td>
+		 		</tr>
+		 		</tbody>
+		    </table>
+        </div>
+        <div class="modal-footer">
+        	<div>
+        		<ul uib-pagination total-items="stdnt.length" ng-model="currentPage" items-per-page="pageSize"></ul>
+        	</div>
+          <div><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Single Details -->
+  
+  
+  <div class="modal fade" id="searchModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Student Information</h4>
+        </div>
+        <div class="modal-body">
+          	<div class="col-sm-5">
+          	<input type="text" class="form-control form-control-lg" data-ng-model="srching" placeholder="Enter Id">
+          	</div>
+          	<div class="col-sm-5">
+          		<input type="button" class="btn btn-info" data-ng-click="callfunc()" value="Search">
+	    	</div>
+	    	<div class="col-sm-2"></div>
+			<table class="table table-dark" data-ng-show="tableHeadStatus" >
+			<thead >
+			    <tr>
+			      <th scope="col">Id</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Section</th>
+			      <th scope="col">Address</th>
+			      <th scope="col">City</th>
+			    </tr>
+			  </thead>
+			  
+			  <tbody>
+		    	<tr>	
+			       <td>{{stdn.id}}</td>
+			       <td>{{stdn.name}}</td>
+			       <td>{{stdn.section}}</td>
+			       <td>{{stdn.address}}</td>
+			       <td>{{stdn.city}}</td>
+		 		</tr>
+		 		</tbody>
+		    </table>
+		   <div> </div>
+        </div>
+        <br><br>
+        <P style="margin-left: 34px;">{{responseData}}</P>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" data-ng-click="closeModal()" value="Close">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+   
